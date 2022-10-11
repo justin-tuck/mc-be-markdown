@@ -5,7 +5,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "set NODE_OPTIONS=--experimental-vm-modules && npx jest",
+    "test": "set NODE_OPTIONS=--experimental-vm-modules && npx jest --watchAll",
     "start": "node sever",
     "dev": "nodemon server"
   },

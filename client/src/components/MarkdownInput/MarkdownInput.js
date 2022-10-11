@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./MarkdownInput.css";
 
-const MarkdownInput = () => {
+const MarkdownInput = (props) => {
   const [markdown, setMarkdown] = useState("");
 
   const onMarkdownChange = (event) => {
@@ -18,6 +18,7 @@ const MarkdownInput = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data.html);
+        props.setHtmlText(data.html);
       })
       .catch((e) => {
         console.log(e);
