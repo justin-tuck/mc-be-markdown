@@ -5,7 +5,8 @@ import HTMLDisplay from "./components/HTMLDisplay/HTMLDisplay";
 function App() {
   const [htmlText, setHtmlText] = useState("");
   return (
-    <div>
+    <div className="App">
+      <h1>Markdown to HTML Converter</h1>
       <MarkdownInput setHtmlText={setHtmlText} />
       <HTMLDisplay htmlText={htmlText} />
     </div>

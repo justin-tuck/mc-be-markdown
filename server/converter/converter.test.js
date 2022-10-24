@@ -72,6 +72,7 @@ describe("Converter convert Markdown to HTML", () => {
         `<p><a href="http://yahoo.com">with a link</a></p>`
       );
     });
+
     test("a link in text", () => {
       const result = Converter.markdownToHtml(
         "This is sample markdown for the [Mailchimp](https://www.mailchimp.com) homework assignment."
@@ -80,6 +81,7 @@ describe("Converter convert Markdown to HTML", () => {
         `<p>This is sample markdown for the <a href="https://www.mailchimp.com">Mailchimp</a> homework assignment.</p>`
       );
     });
+
     test("two links in text", () => {
       const result = Converter.markdownToHtml(
         "This is [Mailchimp](https://www.mailchimp.com) sample markdown for the [Mailchimp](https://www.mailchimp.com) homework assignment."
@@ -88,6 +90,7 @@ describe("Converter convert Markdown to HTML", () => {
         `<p>This is <a href="https://www.mailchimp.com">Mailchimp</a> sample markdown for the <a href="https://www.mailchimp.com">Mailchimp</a> homework assignment.</p>`
       );
     });
+
     test("a link in a header", () => {
       const result = Converter.markdownToHtml(
         "## This is a header [with a link](http://yahoo.com)"
@@ -96,6 +99,50 @@ describe("Converter convert Markdown to HTML", () => {
         `<h2>This is a header <a href="http://yahoo.com">with a link</a></h2>`
       );
     });
+
+    test("an empty link in a header", () => {
+      const result = Converter.markdownToHtml("## This is a header []()");
+      expect(result).toEqual(`<h2>This is a header []()</h2>`);
+    });
+
+    test("a bad link in a header", () => {
+      const result = Converter.markdownToHtml(
+        "## This is a header [abc](not a url)"
+      );
+      expect(result).toEqual(`<h2>This is a header [abc](not a url)</h2>`);
+    });
+
+    test("an empty link in a in text", () => {
+      const result = Converter.markdownToHtml("This is text []()");
+      expect(result).toEqual(`<p>This is text []()</p>`);
+    });
+
+    test("a bad link in a text", () => {
+      const result = Converter.markdownToHtml("This is text [abc](not a url)");
+      expect(result).toEqual(`<p>This is text [abc](not a url)</p>`);
+    });
+
+    test("an empty link in a in text then good link", () => {
+      const result = Converter.markdownToHtml(
+        "This is text []() [with a link](http://yahoo.com)"
+      );
+      expect(result).toEqual(
+        `<p>This is text []() <a href="http://yahoo.com">with a link</a></p>`
+      );
+    });
   });
-  // test Blank line`                           Ignored`
+
+  describe("Blank lines", function () {
+    test("just a blank line", () => {
+      const result = Converter.markdownToHtml("       ");
+      expect(result).toEqual("");
+    });
+
+    test("multiple blank lines", () => {
+      const result = Converter.markdownToHtml(
+        "       \n              \n           \n"
+      );
+      expect(result).toEqual("");
+    });
+  });
 });

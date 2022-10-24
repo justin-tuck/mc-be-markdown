@@ -4,9 +4,9 @@ import "./HTMLDisplay.css";
 const HTMLDisplay = (props) => {
   const htmlDisplay = props.htmlText.split("\n");
   return (
-    <div>
-      {htmlDisplay.map((line) => (
-        <p>{line}</p>
+    <div className="htmlDisplay">
+      {htmlDisplay.map((line, i) => (
+        <p key={i}>{line}</p>
       ))}
     </div>
   );

@@ -31,7 +31,7 @@ const MarkdownInput = (props) => {
         <textarea
           className="form-control"
           id="markdown"
-          rows="3"
+          rows="5"
           placeholder="Enter markdown"
           onChange={onMarkdownChange}
           value={markdown}
