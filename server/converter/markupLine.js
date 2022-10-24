@@ -1,4 +1,3 @@
-import { StringUtil } from "../utilities/stringUtil.js";
 class MarkupLine {
   static MAX_HEADING_SIZE = 6;
   #line = "";
@@ -10,8 +9,12 @@ class MarkupLine {
    * @param {string} line
    */
   constructor(line) {
-    this.#line = StringUtil.removeBlanksAndTrim(line);
+    this.#line = this.#removeBlanksAndTrim(line);
     [this.#isHeading, this.#headingSize] = this.#checkIfLineIsHeading();
+  }
+
+  #removeBlanksAndTrim(str) {
+    return str.replace(/\s\s+/g, " ").trim();
   }
 
   /**
