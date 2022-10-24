@@ -2,7 +2,8 @@
 
 ## set up
 
-npm install
+./server/ npm install
+./client/ npm install
 
 ## run server
 
