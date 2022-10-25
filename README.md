@@ -2,14 +2,13 @@
 
 ## set up
 
-./server/ npm install
-./client/ npm install
+run `npm install` in server and client directory
 
-## run server
+## server
 
-./server/ npm run dev
-./server/ npm run test
+In order to run the server go to the server directory and run `npm run dev`
+In order to run Tests cd in to the server directory and run `npm run test`
 
-## run client
+## client
 
-./client/ npm start
+In order to run the client cd into the client directory and run `npm start`

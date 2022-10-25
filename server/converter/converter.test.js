@@ -61,6 +61,18 @@ describe("Converter convert Markdown to HTML", () => {
       const result = Converter.markdownToHtml("abcd\n#test\nefgh");
       expect(result).toEqual(`<p>abcd\n#test\nefgh</p>`);
     });
+    test("a lot of spaces in between words", () => {
+      const result = Converter.markdownToHtml("abcd      test     efgh");
+      expect(result).toEqual(`<p>abcd      test     efgh</p>`);
+    });
+    test("a lot of spaces in between words", () => {
+      const result = Converter.markdownToHtml(
+        "abcd      test     efgh\naefij aefoiaj    iaefjiae "
+      );
+      expect(result).toEqual(
+        `<p>abcd      test     efgh\naefij aefoiaj    iaefjiae</p>`
+      );
+    });
   });
 
   describe("Links", function () {

@@ -9,12 +9,8 @@ class MarkupLine {
    * @param {string} line
    */
   constructor(line) {
-    this.#line = this.#removeBlanksAndTrim(line);
+    this.#line = line.trim();
     [this.#isHeading, this.#headingSize] = this.#checkIfLineIsHeading();
-  }
-
-  #removeBlanksAndTrim(str) {
-    return str.replace(/\s\s+/g, " ").trim();
   }
 
   /**

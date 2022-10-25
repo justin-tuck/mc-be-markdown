@@ -6,7 +6,7 @@ const HTMLDisplay = (props) => {
   return (
     <div className="htmlDisplay">
       {htmlDisplay.map((line, i) => (
-        <p key={i}>{line}</p>
+        <pre key={i}>{line}</pre>
       ))}
     </div>
   );

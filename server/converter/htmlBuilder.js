@@ -1,4 +1,4 @@
-import LinkBuilder from "./LinkBuilder.js";
+import LinkBuilder from "./linkBuilder.js";
 
 class HTMLBuilder {
   #html;
